@@ -1,99 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spice Garden Restaurant</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spice Garden Restaurant</title>
+    <meta name="description" content="Spice Garden Restaurant - Delicious food, warm atmosphere and memorable dining.">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">🌶️ Spice Garden</div>
-      <button class="menu-btn" onclick="toggleMenu()">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">🌿 Spice Garden</div>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-content">
-        <p class="tag">AUTHENTIC • FRESH • DELICIOUS</p>
-        <h1>Good Food.<br>Great Memories.</h1>
-        <p>Authentic Indian flavours prepared fresh for every guest.</p>
-        <div>
-          <a class="btn" href="#menu">View Menu</a>
-          <a class="btn outline" href="#contact">Book a Table</a>
+        <div class="hero-content">
+            <p class="welcome">WELCOME TO</p>
+
+            <h1>Spice Garden Restaurant</h1>
+
+            <p>
+                Delicious flavors, fresh ingredients and a dining
+                experience you'll remember.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">View Menu</a>
+                <a href="#contact" class="btn secondary">Contact Us</a>
+            </div>
         </div>
-      </div>
     </section>
 
+    <!-- Highlights -->
+    <section class="highlights">
+
+        <div class="highlight">
+            <span>🍛</span>
+            <h3>Fresh Food</h3>
+            <p>Prepared with quality ingredients.</p>
+        </div>
+
+        <div class="highlight">
+            <span>👨‍🍳</span>
+            <h3>Expert Chefs</h3>
+            <p>Carefully prepared with passion.</p>
+        </div>
+
+        <div class="highlight">
+            <span>⭐</span>
+            <h3>Great Experience</h3>
+            <p>Good food and a welcoming atmosphere.</p>
+        </div>
+
+    </section>
+
+    <!-- Menu -->
     <section id="menu" class="section">
-      <p class="tag">OUR MENU</p>
-      <h2>Popular Dishes</h2>
-      <div class="menu-grid">
-        <article class="card"><div class="food">🍛</div><h3>Chicken Biryani</h3><p>Fragrant basmati rice with tender chicken and spices.</p><strong>₹249</strong></article>
-        <article class="card"><div class="food">🍗</div><h3>Chicken Tikka</h3><p>Juicy grilled chicken marinated in aromatic spices.</p><strong>₹229</strong></article>
-        <article class="card"><div class="food">🥘</div><h3>Paneer Butter Masala</h3><p>Creamy tomato gravy with soft paneer.</p><strong>₹199</strong></article>
-        <article class="card"><div class="food">🍚</div><h3>Veg Fried Rice</h3><p>Wok-tossed rice with fresh vegetables.</p><strong>₹149</strong></article>
-        <article class="card"><div class="food">🫓</div><h3>Butter Naan</h3><p>Soft tandoor-baked naan finished with butter.</p><strong>₹49</strong></article>
-        <article class="card"><div class="food">🍨</div><h3>Gulab Jamun</h3><p>Warm traditional dessert served with syrup.</p><strong>₹79</strong></article>
-      </div>
+        <p class="section-label">OUR MENU</p>
+        <h2>Popular Dishes</h2>
+
+        <div class="menu-grid">
+
+            <div class="menu-card">
+                <h3>🍗 Chicken Biryani</h3>
+                <p>Fragrant rice with flavorful spices and tender chicken.</p>
+                <strong>₹249</strong>
+            </div>
+
+            <div class="menu-card">
+                <h3>🥘 Paneer Curry</h3>
+                <p>Creamy and delicious paneer cooked with aromatic spices.</p>
+                <strong>₹199</strong>
+            </div>
+
+            <div class="menu-card">
+                <h3>🍜 Special Noodles</h3>
+                <p>Fresh vegetables and noodles tossed with tasty sauces.</p>
+                <strong>₹159</strong>
+            </div>
+
+            <div class="menu-card">
+                <h3>🍨 Special Dessert</h3>
+                <p>A sweet finishing touch to your dining experience.</p>
+                <strong>₹99</strong>
+            </div>
+
+        </div>
     </section>
 
-    <section id="about" class="about section">
-      <div>
-        <p class="tag">ABOUT US</p>
-        <h2>A Taste Worth Coming Back For</h2>
-        <p>Spice Garden is a demo restaurant brand created to showcase a professional restaurant website. Replace this text with the real owner's story, specialities and years of experience.</p>
-        <a class="btn" href="#contact">Visit Us</a>
-      </div>
-      <div class="about-box">👨‍🍳<br><span>Freshly prepared<br>with care</span></div>
+    <!-- About -->
+    <section id="about" class="about">
+        <div>
+            <p class="section-label">ABOUT US</p>
+            <h2>A Place For Great Food</h2>
+
+            <p>
+                At Spice Garden Restaurant, we believe great food brings
+                people together. Enjoy delicious dishes, friendly service
+                and a comfortable dining experience.
+            </p>
+        </div>
     </section>
 
-    <section id="gallery" class="section">
-      <p class="tag">GALLERY</p>
-      <h2>Our Restaurant</h2>
-      <div class="gallery">
-        <div>🍽️<span>Dining</span></div>
-        <div>🍛<span>Signature dishes</span></div>
-        <div>👨‍🍳<span>Our kitchen</span></div>
-        <div>🥗<span>Fresh ingredients</span></div>
-      </div>
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+        <p class="section-label">GET IN TOUCH</p>
+        <h2>Visit Spice Garden</h2>
+
+        <p>📍 Your Restaurant Address</p>
+        <p>📞 +91 XXXXX XXXXX</p>
+        <p>🕐 Open daily: 11:00 AM – 10:30 PM</p>
+
+        <a href="tel:+910000000000" class="btn">Call Restaurant</a>
     </section>
 
-    <section id="contact" class="contact section">
-      <div>
-        <p class="tag">CONTACT</p>
-        <h2>Reserve Your Table</h2>
-        <p>📍 Main Road, Vijayawada, Andhra Pradesh</p>
-        <p>📞 +91 98765 43210</p>
-        <p>🕐 11:00 AM – 11:00 PM</p>
-      </div>
+    <!-- Footer -->
+    <footer>
+        <h3>🌿 Spice Garden Restaurant</h3>
+        <p>Good food. Great moments.</p>
+        <p>© 2026 Spice Garden Restaurant</p>
+    </footer>
 
-      <form onsubmit="bookTable(event)">
-        <input id="name" type="text" placeholder="Your name" required>
-        <input id="phone" type="tel" placeholder="Phone number" required>
-        <input id="date" type="date" required>
-        <select id="people" required>
-          <option value="">Number of people</option>
-          <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
-        </select>
-        <button class="btn" type="submit">Request Booking</button>
-      </form>
-    </section>
-  </main>
+    <script src="script.js"></script>
 
-  <footer>
-    <p>© 2026 Spice Garden Restaurant. Demo website.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
-</html>
+                                    </html>
