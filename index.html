@@ -3,453 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Spice Garden Restaurant</title>
-    <meta name="description" content="Spice Garden Restaurant - Delicious food, great moments.">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<header class="topbar">
-    <div class="brand">
-        <span class="brand-icon">🌿</span>
-        <div>
-            <strong>Spice Garden</strong>
-            <small>RESTAURANT</small>
-        </div>
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="logo">
+        🌶️ <span>Spice Garden</span>
     </div>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
         ☰
     </button>
 
-    <nav id="navMenu">
+    <nav class="nav-menu" id="navMenu">
         <a href="#home">Home</a>
         <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
         <a href="#booking">Book a Table</a>
-        <button class="nav-cart" onclick="openCart()">
-            🛒 Cart <span id="cartCount">0</span>
-        </button>
-        <a href="#orders">My Order</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#order">My Order</a>
     </nav>
 </header>
 
 
-<!-- HERO -->
-<section id="home" class="hero">
-    <div class="hero-overlay"></div>
+<!-- ================= SIDE MENU ================= -->
+<div class="side-menu" id="sideMenu">
+    <button class="close-menu" id="closeMenu">✕</button>
 
+    <h2>Spice Garden</h2>
+
+    <a href="#home">🏠 Home</a>
+    <a href="#menu">🍽️ Menu</a>
+    <a href="#booking">🪑 Book a Table</a>
+    <a href="#reviews">⭐ Reviews</a>
+    <a href="#contact">📍 Address & Contact</a>
+    <a href="#order">🛒 My Order</a>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
     <div class="hero-content">
-        <p class="eyebrow">WELCOME TO SPICE GARDEN</p>
+        <p class="small-title">WELCOME TO</p>
 
-        <h1>Authentic Flavours.<br>Unforgettable Moments.</h1>
+        <h1>Spice Garden<br>Restaurant</h1>
 
-        <p class="hero-text">
-            Fresh ingredients, delicious recipes and a warm dining
-            experience for family and friends.
+        <p>
+            Delicious food, warm hospitality and unforgettable flavours.
         </p>
 
         <div class="hero-buttons">
-            <a href="#menu" class="btn primary-btn">Explore Menu</a>
-            <a href="#booking" class="btn outline-btn">Book a Table</a>
+            <a href="#menu" class="btn">View Menu</a>
+            <a href="#booking" class="btn secondary-btn">Book a Table</a>
         </div>
     </div>
 </section>
 
 
-<!-- QUICK ACTIONS -->
+<!-- ================= QUICK ACTIONS ================= -->
 <section class="quick-actions">
 
-    <a href="#menu">
+    <a href="#menu" class="quick-card">
         <span>🍽️</span>
-        <div>
-            <strong>Order Food</strong>
-            <small>Choose your favourites</small>
-        </div>
+        <h3>Our Menu</h3>
+        <p>Explore our dishes</p>
     </a>
 
-    <a href="#booking">
-        <span>📅</span>
-        <div>
-            <strong>Book a Table</strong>
-            <small>Reserve your table</small>
-        </div>
+    <a href="#booking" class="quick-card">
+        <span>🪑</span>
+        <h3>Book a Table</h3>
+        <p>Reserve your table</p>
     </a>
 
-    <a href="#contact">
-        <span>📍</span>
-        <div>
-            <strong>Find Us</strong>
-            <small>View restaurant details</small>
-        </div>
+    <a href="#order" class="quick-card">
+        <span>🛒</span>
+        <h3>My Order</h3>
+        <p>View your cart</p>
+    </a>
+
+    <a href="#contact" class="quick-card">
+        <span>📞</span>
+        <h3>Contact Us</h3>
+        <p>Get in touch</p>
     </a>
 
 </section>
 
 
-<!-- MENU -->
-<section id="menu" class="menu-section">
+<!-- ================= MENU ================= -->
+<section class="menu-section" id="menu">
 
     <div class="section-heading">
-        <p class="eyebrow dark">OUR MENU</p>
-        <h2>Choose Your Favourite</h2>
-        <p>Freshly prepared dishes made for every taste.</p>
+        <p class="small-title">EXPLORE</p>
+        <h2>Our Menu</h2>
+        <p>Freshly prepared dishes for every taste.</p>
     </div>
 
-    <!-- CATEGORY BUTTONS -->
-    <div class="categories">
-        <button class="category active" onclick="showCategory('starters', this)">
+
+    <!-- MENU CATEGORY BUTTONS -->
+    <div class="category-buttons">
+
+        <button class="category-btn active" data-category="starters">
             Starters
         </button>
 
-        <button class="category" onclick="showCategory('maincourse', this)">
+        <button class="category-btn" data-category="maincourse">
             Main Course
         </button>
 
-        <button class="category" onclick="showCategory('mocktails', this)">
+        <button class="category-btn" data-category="mocktails">
             Mocktails
         </button>
 
-        <button class="category" onclick="showCategory('vegtiffins', this)">
+        <button class="category-btn" data-category="vegtiffins">
             Veg Tiffins
         </button>
 
-        <button class="category" onclick="showCategory('nonvegtiffins', this)">
+        <button class="category-btn" data-category="nonvegtiffins">
             Non-Veg Tiffins
         </button>
+
     </div>
 
 
-    <!-- STARTERS -->
-    <div class="food-category active-category" id="starters">
+    <!-- ================= STARTERS ================= -->
+    <div class="menu-category active-category" id="starters">
+
+        <h2>🥗 Starters</h2>
 
         <div class="food-grid">
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=80" alt="Chicken 65">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken 65</h3>
-                    <p>Crispy spicy chicken tossed with aromatic spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹220</strong>
-                        <button onclick="addToCart('Chicken 65', 220)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80">
+                <h3>Veg Spring Rolls</h3>
+                <p>Crispy vegetable rolls.</p>
+                <strong>₹160</strong>
+                <button class="add-cart"
+                    data-name="Veg Spring Rolls"
+                    data-price="160">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80" alt="Paneer Tikka">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Paneer Tikka</h3>
-                    <p>Grilled paneer with peppers and Indian spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹190</strong>
-                        <button onclick="addToCart('Paneer Tikka', 190)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80">
+                <h3>Chicken 65</h3>
+                <p>Spicy crispy chicken.</p>
+                <strong>₹220</strong>
+                <button class="add-cart"
+                    data-name="Chicken 65"
+                    data-price="220">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=900&q=80" alt="Chicken Wings">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken Wings</h3>
-                    <p>Juicy wings with a delicious spicy coating.</p>
-                    <div class="food-bottom">
-                        <strong>₹230</strong>
-                        <button onclick="addToCart('Chicken Wings', 230)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80">
+                <h3>Paneer Tikka</h3>
+                <p>Grilled spicy paneer.</p>
+                <strong>₹200</strong>
+                <button class="add-cart"
+                    data-name="Paneer Tikka"
+                    data-price="200">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=900&q=80" alt="Gobi Manchurian">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Gobi Manchurian</h3>
-                    <p>Crispy cauliflower tossed in Manchurian sauce.</p>
-                    <div class="food-bottom">
-                        <strong>₹160</strong>
-                        <button onclick="addToCart('Gobi Manchurian', 160)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=80">
+                <h3>Chicken Wings</h3>
+                <p>Juicy spicy chicken wings.</p>
+                <strong>₹240</strong>
+                <button class="add-cart"
+                    data-name="Chicken Wings"
+                    data-price="240">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80" alt="Chicken Tikka">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken Tikka</h3>
-                    <p>Tender chicken marinated and grilled to perfection.</p>
-                    <div class="food-bottom">
-                        <strong>₹240</strong>
-                        <button onclick="addToCart('Chicken Tikka', 240)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80">
+                <h3>Gobi Manchurian</h3>
+                <p>Crispy cauliflower in sauce.</p>
+                <strong>₹170</strong>
+                <button class="add-cart"
+                    data-name="Gobi Manchurian"
+                    data-price="170">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=900&q=80" alt="Veg Spring Rolls">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Veg Spring Rolls</h3>
-                    <p>Crispy rolls filled with fresh vegetables.</p>
-                    <div class="food-bottom">
-                        <strong>₹150</strong>
-                        <button onclick="addToCart('Veg Spring Rolls', 150)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80">
+                <h3>French Fries</h3>
+                <p>Crispy golden fries.</p>
+                <strong>₹120</strong>
+                <button class="add-cart"
+                    data-name="French Fries"
+                    data-price="120">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=900&q=80" alt="Chicken Lollipop">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken Lollipop</h3>
-                    <p>Juicy chicken prepared with a flavorful coating.</p>
-                    <div class="food-bottom">
-                        <strong>₹250</strong>
-                        <button onclick="addToCart('Chicken Lollipop', 250)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=80">
+                <h3>Onion Rings</h3>
+                <p>Crispy fried onion rings.</p>
+                <strong>₹130</strong>
+                <button class="add-cart"
+                    data-name="Onion Rings"
+                    data-price="130">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=900&q=80" alt="French Fries">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>French Fries</h3>
-                    <p>Golden crispy fries served with seasoning.</p>
-                    <div class="food-bottom">
-                        <strong>₹120</strong>
-                        <button onclick="addToCart('French Fries', 120)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80">
+                <h3>Veg Manchurian</h3>
+                <p>Spicy vegetable balls.</p>
+                <strong>₹180</strong>
+                <button class="add-cart"
+                    data-name="Veg Manchurian"
+                    data-price="180">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" alt="Chicken Kebab">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken Kebab</h3>
-                    <p>Grilled chicken kebabs with traditional spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹230</strong>
-                        <button onclick="addToCart('Chicken Kebab', 230)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1599487488170-8e7a7c8a9e6b?auto=format&fit=crop&w=800&q=80">
+                <h3>Chilli Paneer</h3>
+                <p>Paneer tossed with peppers.</p>
+                <strong>₹210</strong>
+                <button class="add-cart"
+                    data-name="Chilli Paneer"
+                    data-price="210">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=900&q=80" alt="Crispy Corn">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Crispy Corn</h3>
-                    <p>Crunchy corn tossed with herbs and spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹140</strong>
-                        <button onclick="addToCart('Crispy Corn', 140)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=800&q=80">
+                <h3>Chicken Lollipop</h3>
+                <p>Crispy spicy chicken.</p>
+                <strong>₹250</strong>
+                <button class="add-cart"
+                    data-name="Chicken Lollipop"
+                    data-price="250">
+                    Add to Cart
+                </button>
+            </div>
 
         </div>
     </div>
 
 
-    <!-- MAIN COURSE -->
-    <div class="food-category" id="maincourse">
+    <!-- ================= MAIN COURSE ================= -->
+    <div class="menu-category" id="maincourse">
+
+        <h2>🍛 Main Course</h2>
 
         <div class="food-grid">
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=900&q=80" alt="Chicken Biryani">
-                <div class="food-info">
-                    <span class="tag">SPECIAL</span>
-                    <h3>Chicken Biryani</h3>
-                    <p>Fragrant basmati rice with tender chicken and spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹249</strong>
-                        <button onclick="addToCart('Chicken Biryani', 249)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1563379091339-03246963d29a?auto=format&fit=crop&w=800&q=80">
+                <h3>Chicken Biryani</h3>
+                <p>Fragrant basmati rice with chicken.</p>
+                <strong>₹280</strong>
+                <button class="add-cart"
+                    data-name="Chicken Biryani"
+                    data-price="280">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=900&q=80" alt="Mutton Biryani">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Mutton Biryani</h3>
-                    <p>Rich biryani prepared with tender mutton.</p>
-                    <div class="food-bottom">
-                        <strong>₹329</strong>
-                        <button onclick="addToCart('Mutton Biryani', 329)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?auto=format&fit=crop&w=800&q=80">
+                <h3>Veg Biryani</h3>
+                <p>Aromatic vegetable biryani.</p>
+                <strong>₹220</strong>
+                <button class="add-cart"
+                    data-name="Veg Biryani"
+                    data-price="220">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=900&q=80" alt="Veg Biryani">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Veg Biryani</h3>
-                    <p>Aromatic rice cooked with vegetables and spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹199</strong>
-                        <button onclick="addToCart('Veg Biryani', 199)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80">
+                <h3>Butter Naan</h3>
+                <p>Soft naan with butter.</p>
+                <strong>₹60</strong>
+                <button class="add-cart"
+                    data-name="Butter Naan"
+                    data-price="60">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=80" alt="Paneer Butter Masala">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Paneer Butter Masala</h3>
-                    <p>Paneer cooked in a creamy tomato-based gravy.</p>
-                    <div class="food-bottom">
-                        <strong>₹210</strong>
-                        <button onclick="addToCart('Paneer Butter Masala', 210)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80">
+                <h3>Paneer Butter Masala</h3>
+                <p>Creamy paneer curry.</p>
+                <strong>₹240</strong>
+                <button class="add-cart"
+                    data-name="Paneer Butter Masala"
+                    data-price="240">
+                    Add to Cart
+                </button>
+            </div>
 
         </div>
     </div>
 
 
-    <!-- MOCKTAILS -->
-    <div class="food-category" id="mocktails">
+    <!-- ================= MOCKTAILS ================= -->
+    <div class="menu-category" id="mocktails">
+
+        <h2>🍹 Mocktails</h2>
 
         <div class="food-grid">
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80" alt="Virgin Mojito">
-                <div class="food-info">
-                    <span class="tag drink">DRINK</span>
-                    <h3>Virgin Mojito</h3>
-                    <p>Refreshing mint, lime and sparkling soda.</p>
-                    <div class="food-bottom">
-                        <strong>₹120</strong>
-                        <button onclick="addToCart('Virgin Mojito', 120)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80">
+                <h3>Blue Lagoon</h3>
+                <p>Refreshing citrus mocktail.</p>
+                <strong>₹140</strong>
+                <button class="add-cart"
+                    data-name="Blue Lagoon"
+                    data-price="140">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=80" alt="Fresh Orange Mocktail">
-                <div class="food-info">
-                    <span class="tag drink">DRINK</span>
-                    <h3>Orange Mocktail</h3>
-                    <p>Fresh citrus flavours with a refreshing finish.</p>
-                    <div class="food-bottom">
-                        <strong>₹130</strong>
-                        <button onclick="addToCart('Orange Mocktail', 130)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80">
+                <h3>Virgin Mojito</h3>
+                <p>Lime, mint and sparkling refreshment.</p>
+                <strong>₹150</strong>
+                <button class="add-cart"
+                    data-name="Virgin Mojito"
+                    data-price="150">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80" alt="Strawberry Mocktail">
-                <div class="food-info">
-                    <span class="tag drink">DRINK</span>
-                    <h3>Strawberry Mocktail</h3>
-                    <p>Sweet strawberry flavour with a chilled finish.</p>
-                    <div class="food-bottom">
-                        <strong>₹140</strong>
-                        <button onclick="addToCart('Strawberry Mocktail', 140)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80">
+                <h3>Fruit Punch</h3>
+                <p>Fresh mixed fruit drink.</p>
+                <strong>₹160</strong>
+                <button class="add-cart"
+                    data-name="Fruit Punch"
+                    data-price="160">
+                    Add to Cart
+                </button>
+            </div>
 
         </div>
     </div>
 
 
-    <!-- VEG TIFFINS -->
-    <div class="food-category" id="vegtiffins">
+    <!-- ================= VEG TIFFINS ================= -->
+    <div class="menu-category" id="vegtiffins">
+
+        <h2>🥘 Veg Tiffins</h2>
 
         <div class="food-grid">
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=900&q=80" alt="Masala Dosa">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Masala Dosa</h3>
-                    <p>Crispy dosa served with potato masala and chutney.</p>
-                    <div class="food-bottom">
-                        <strong>₹90</strong>
-                        <button onclick="addToCart('Masala Dosa', 90)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80">
+                <h3>Masala Dosa</h3>
+                <p>Crispy dosa with potato masala.</p>
+                <strong>₹100</strong>
+                <button class="add-cart"
+                    data-name="Masala Dosa"
+                    data-price="100">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=900&q=80" alt="Idly">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Idly</h3>
-                    <p>Soft steamed idlis served with sambar and chutney.</p>
-                    <div class="food-bottom">
-                        <strong>₹70</strong>
-                        <button onclick="addToCart('Idly', 70)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?auto=format&fit=crop&w=800&q=80">
+                <h3>Idli Sambar</h3>
+                <p>Soft idlis with sambar.</p>
+                <strong>₹80</strong>
+                <button class="add-cart"
+                    data-name="Idli Sambar"
+                    data-price="80">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=900&q=80" alt="Vada">
-                <div class="food-info">
-                    <span class="tag veg">VEG</span>
-                    <h3>Medu Vada</h3>
-                    <p>Crispy South Indian vada with chutney and sambar.</p>
-                    <div class="food-bottom">
-                        <strong>₹80</strong>
-                        <button onclick="addToCart('Medu Vada', 80)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80">
+                <h3>Vada</h3>
+                <p>Crispy South Indian vada.</p>
+                <strong>₹80</strong>
+                <button class="add-cart"
+                    data-name="Vada"
+                    data-price="80">
+                    Add to Cart
+                </button>
+            </div>
 
         </div>
     </div>
 
 
-    <!-- NON VEG TIFFINS -->
-    <div class="food-category" id="nonvegtiffins">
+    <!-- ================= NON VEG TIFFINS ================= -->
+    <div class="menu-category" id="nonvegtiffins">
+
+        <h2>🍗 Non-Veg Tiffins</h2>
 
         <div class="food-grid">
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80" alt="Chicken Dosa">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Chicken Dosa</h3>
-                    <p>Crispy dosa served with flavorful chicken filling.</p>
-                    <div class="food-bottom">
-                        <strong>₹180</strong>
-                        <button onclick="addToCart('Chicken Dosa', 180)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80">
+                <h3>Chicken Dosa</h3>
+                <p>Dosa served with chicken filling.</p>
+                <strong>₹180</strong>
+                <button class="add-cart"
+                    data-name="Chicken Dosa"
+                    data-price="180">
+                    Add to Cart
+                </button>
+            </div>
 
-            <article class="food-card">
-                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80" alt="Egg Dosa">
-                <div class="food-info">
-                    <span class="tag">NON-VEG</span>
-                    <h3>Egg Dosa</h3>
-                    <p>Crispy dosa topped with fresh egg and spices.</p>
-                    <div class="food-bottom">
-                        <strong>₹120</strong>
-                        <button onclick="addToCart('Egg Dosa', 120)">Add +</button>
-                    </div>
-                </div>
-            </article>
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80">
+                <h3>Egg Dosa</h3>
+                <p>Dosa prepared with egg.</p>
+                <strong>₹120</strong>
+                <button class="add-cart"
+                    data-name="Egg Dosa"
+                    data-price="120">
+                    Add to Cart
+                </button>
+            </div>
 
         </div>
     </div>
@@ -457,63 +453,205 @@
 </section>
 
 
-<!-- BOOK A TABLE -->
-<section id="booking" class="booking-section">
+<!-- ================= BOOKING ================= -->
+<section class="booking-section" id="booking">
 
-    <div class="booking-container">
+    <div class="section-heading">
+        <p class="small-title">RESERVATION</p>
+        <h2>Book a Table</h2>
+        <p>Choose your date, time and number of members.</p>
+    </div>
 
-        <div class="booking-info">
-            <p class="eyebrow dark">RESERVATIONS</p>
-            <h2>Book Your Table</h2>
-            <p>
-                Planning a family dinner, lunch or special occasion?
-                Reserve your table in advance.
-            </p>
+    <form id="bookingForm" class="booking-form">
 
-            <div class="booking-feature">
-                <span>📅</span>
-                <div>
-                    <strong>Choose your date</strong>
-                    <p>Select the day you want to visit.</p>
-                </div>
-            </div>
-
-            <div class="booking-feature">
-                <span>🕐</span>
-                <div>
-                    <strong>Select your time</strong>
-                    <p>Choose your preferred dining time.</p>
-                </div>
-            </div>
-
-            <div class="booking-feature">
-                <span>👥</span>
-                <div>
-                    <strong>Number of guests</strong>
-                    <p>Tell us how many people are coming.</p>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="bookingName">Your Name</label>
+            <input
+                type="text"
+                id="bookingName"
+                placeholder="Enter your name"
+                required>
         </div>
 
+        <div class="form-group">
+            <label for="bookingPhone">Phone Number</label>
+            <input
+                type="tel"
+                id="bookingPhone"
+                placeholder="Enter phone number"
+                required>
+        </div>
 
-        <form id="bookingForm" class="booking-form">
+        <div class="form-group">
+            <label for="bookingDate">Date</label>
+            <input
+                type="date"
+                id="bookingDate"
+                required>
+        </div>
 
-            <label>Your Name</label>
-            <input type="text" id="bookingName" placeholder="Enter your name" required>
+        <div class="form-group">
+            <label for="bookingTime">Time</label>
+            <input
+                type="time"
+                id="bookingTime"
+                required>
+        </div>
 
-            <label>Phone Number</label>
-            <input type="tel" id="bookingPhone" placeholder="Enter phone number" required>
+        <div class="form-group">
+            <label for="bookingMembers">Number of Members</label>
 
-            <label>Date</label>
-            <input type="date" id="bookingDate" required>
-
-            <label>Time</label>
-            <input type="time" id="bookingTime" required>
-
-            <label>Number of Members</label>
             <select id="bookingMembers" required>
                 <option value="">Select members</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="bookingMessage">Special Request</label>
+            <textarea
+                id="bookingMessage"
+                rows="4"
+                placeholder="Any special request?"></textarea>
+        </div>
+
+        <!-- IMPORTANT: SUBMIT BUTTON -->
+        <button type="submit" class="btn booking-submit">
+            🪑 Book Table
+        </button>
+
+    </form>
+
+    <p class="booking-note">
+        Your booking request will be prepared for WhatsApp confirmation.
+    </p>
+
+</section>
+
+
+<!-- ================= MY ORDER ================= -->
+<section class="order-section" id="order">
+
+    <div class="section-heading">
+        <p class="small-title">YOUR CART</p>
+        <h2>My Order</h2>
+    </div>
+
+    <div id="cartItems" class="cart-items">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-summary">
+        <h3>Total: ₹<span id="cartTotal">0</span></h3>
+
+        <button id="whatsappOrder" class="btn whatsapp-btn">
+            📱 Order on WhatsApp
+        </button>
+    </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews-section" id="reviews">
+
+    <div class="section-heading">
+        <p class="small-title">CUSTOMER FEEDBACK</p>
+        <h2>Reviews</h2>
+        <p>We would love to hear from you.</p>
+    </div>
+
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+
+        <p>
+            “Great food and a wonderful dining experience!”
+        </p>
+
+        <strong>Happy Customer</strong>
+    </div>
+
+    <a
+        href="mailto:restaurant@example.com?subject=Spice%20Garden%20Review"
+        class="btn">
+        ⭐ Give a Review
+    </a>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section class="contact-section" id="contact">
+
+    <div class="section-heading">
+        <p class="small-title">GET IN TOUCH</p>
+        <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+            <span>📍</span>
+            <h3>Address</h3>
+            <p>Restaurant Address Here</p>
+        </div>
+
+        <div class="contact-card">
+            <span>📞</span>
+            <h3>Phone</h3>
+            <p>+91 90000 00000</p>
+        </div>
+
+        <div class="contact-card">
+            <span>🕐</span>
+            <h3>Opening Hours</h3>
+            <p>11:00 AM – 10:30 PM</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHATSAPP ================= -->
+<a
+    class="floating-whatsapp"
+    href="https://wa.me/910000000000"
+    target="_blank"
+    aria-label="WhatsApp">
+    💬
+</a>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <h2>🌶️ Spice Garden Restaurant</h2>
+
+    <p>
+        Delicious food. Great memories.
+    </p>
+
+    <p class="copyright">
+        © 2026 Spice Garden Restaurant
+    </p>
+
+</footer>
+
+
+<!-- ================= CART PANEL ================= -->
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+        <h2>🛒 My Order</h2>
+
+     
