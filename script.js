@@ -1,87 +1,154 @@
-/* =========================
-   MOBILE MENU
-========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-
-menuToggle.addEventListener("click", function () {
-    navMenu.classList.toggle("show");
-});
-
-
-/* Close mobile menu after clicking a link */
-
-document.querySelectorAll("#navMenu a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-        navMenu.classList.remove("show");
-    });
-
-});
-
-
-/* =========================
-   MENU CATEGORIES
-========================= */
-
-function showCategory(categoryId, button) {
-
-    document.querySelectorAll(".food-category").forEach(function (category) {
-        category.classList.remove("active-category");
-    });
-
-    document.getElementById(categoryId).classList.add("active-category");
-
-
-    document.querySelectorAll(".category").forEach(function (btn) {
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-}
-
-
-/* =========================
-   CART
-========================= */
+// =========================
+// SPICE GARDEN RESTAURANT
+// COMPLETE JAVASCRIPT
+// =========================
 
 let cart = [];
 
+// =========================
+// THREE-BAR MENU
+// =========================
 
-/* Add item */
+function toggleMenu() {
+    const navigation = document.getElementById("navMenu");
 
-function addToCart(name, price) {
+    if (navigation) {
+        navigation.classList.toggle("show");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("menuToggle");
+    const navigation = document.getElementById("navMenu");
+
+    if (menuButton && navigation) {
+        menuButton.addEventListener("click", function () {
+            navigation.classList.toggle("show");
+        });
+    }
+
+    // Close menu when clicking navigation links
+    const links = document.querySelectorAll("#navMenu a");
+
+    links.forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (navigation) {
+                navigation.classList.remove("show");
+            }
+        });
+    });
+
+    updateCart();
+
+    // =========================
+    // BOOKING FORM
+    // =========================
+
+    const bookingForm = document.getElementById("bookingForm");
+
+    if (bookingForm) {
+        bookingForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("bookingName")?.value || "";
+            const phone = document.getElementById("bookingPhone")?.value || "";
+            const date = document.getElementById("bookingDate")?.value || "";
+            const time = document.getElementById("bookingTime")?.value || "";
+            const members = document.getElementById("bookingMembers")?.value || "";
+
+            if (!name || !phone || !date || !time || !members) {
+                alert("Please fill all required booking details.");
+                return;
+            }
+
+            alert(
+                "Table booking request submitted successfully!\n\n" +
+                "Name: " + name + "\n" +
+                "Date: " + date + "\n" +
+                "Time: " + time + "\n" +
+                "Members: " + members
+            );
+
+            bookingForm.reset();
+        });
+    }
+
+});
+
+// =========================
+// MENU CATEGORIES
+// =========================
+
+function showCategory(categoryName, button) {
+
+    const categories = [
+        "starters",
+        "maincourse",
+        "mocktails",
+        "veg",
+        "nonveg"
+    ];
+
+    categories.forEach(function (category) {
+
+        const section = document.getElementById(category);
+
+        if (section) {
+            section.style.display = "none";
+        }
+
+    });
+
+    const selectedSection = document.getElementById(categoryName);
+
+    if (selectedSection) {
+        selectedSection.style.display = "grid";
+    }
+
+    const buttons = document.querySelectorAll(".category");
+
+    buttons.forEach(function (btn) {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+}
+
+// =========================
+// ADD TO CART
+// =========================
+
+function addToCart(name, price, image) {
+
+    price = Number(price);
 
     const existingItem = cart.find(function (item) {
         return item.name === name;
     });
 
-
     if (existingItem) {
-
         existingItem.quantity++;
-
     } else {
-
         cart.push({
             name: name,
             price: price,
+            image: image || "",
             quantity: 1
         });
-
     }
-
 
     updateCart();
 
-    openCart();
-
+    alert(name + " added to cart!");
 }
 
-
-/* Update cart */
+// =========================
+// UPDATE CART
+// =========================
 
 function updateCart() {
 
@@ -89,185 +156,192 @@ function updateCart() {
     const cartCount = document.getElementById("cartCount");
     const cartTotal = document.getElementById("cartTotal");
 
+    let totalItems = 0;
+    let totalPrice = 0;
 
-    cartItems.innerHTML = "";
+    cart.forEach(function (item) {
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+    });
 
+    if (cartCount) {
+        cartCount.textContent = totalItems;
+    }
+
+    if (cartTotal) {
+        cartTotal.textContent = "₹" + totalPrice;
+    }
+
+    if (!cartItems) {
+        return;
+    }
 
     if (cart.length === 0) {
 
         cartItems.innerHTML =
             '<p class="empty-cart">Your cart is empty.</p>';
 
-        cartCount.textContent = "0";
-        cartTotal.textContent = "0";
-
         return;
     }
 
-
-    let total = 0;
-    let count = 0;
-
+    cartItems.innerHTML = "";
 
     cart.forEach(function (item, index) {
 
-        total += item.price * item.quantity;
-        count += item.quantity;
+        const itemTotal = item.price * item.quantity;
 
+        const cartItem = document.createElement("div");
 
-        const itemElement = document.createElement("div");
+        cartItem.className = "cart-item";
 
-        itemElement.className = "cart-item";
-
-
-        itemElement.innerHTML = `
-
+        cartItem.innerHTML = `
             <div class="cart-item-info">
-
                 <strong>${item.name}</strong>
-
-                <small>
-                    ₹${item.price} × ${item.quantity}
-                </small>
-
-                <div class="quantity-controls">
-
-                    <button onclick="decreaseQuantity(${index})">
-                        −
-                    </button>
-
-                    <span>${item.quantity}</span>
-
-                    <button onclick="increaseQuantity(${index})">
-                        +
-                    </button>
-
-                </div>
-
+                <p>₹${item.price} × ${item.quantity}</p>
             </div>
 
-            <div>
-
-                <strong>
-                    ₹${item.price * item.quantity}
-                </strong>
-
-                <br>
-
-                <button
-                    class="remove-item"
-                    onclick="removeItem(${index})">
-                    Remove
-                </button>
-
+            <div class="cart-controls">
+                <button onclick="decreaseQuantity(${index})">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="increaseQuantity(${index})">+</button>
+                <button onclick="removeFromCart(${index})">✕</button>
             </div>
+
+            <strong>₹${itemTotal}</strong>
         `;
 
-
-        cartItems.appendChild(itemElement);
-
+        cartItems.appendChild(cartItem);
     });
-
-
-    cartCount.textContent = count;
-    cartTotal.textContent = total;
-
 }
 
-
-/* Increase */
+// =========================
+// INCREASE QUANTITY
+// =========================
 
 function increaseQuantity(index) {
 
-    cart[index].quantity++;
-
-    updateCart();
-
+    if (cart[index]) {
+        cart[index].quantity++;
+        updateCart();
+    }
 }
 
-
-/* Decrease */
+// =========================
+// DECREASE QUANTITY
+// =========================
 
 function decreaseQuantity(index) {
 
-    cart[index].quantity--;
-
-
-    if (cart[index].quantity <= 0) {
-
-        cart.splice(index, 1);
-
-    }
-
-
-    updateCart();
-
-}
-
-
-/* Remove */
-
-function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    updateCart();
-
-}
-
-
-/* Open cart */
-
-function openCart() {
-
-    document.getElementById("cartPanel").classList.add("show");
-
-    document.getElementById("cartOverlay").classList.add("show");
-
-}
-
-
-/* Close cart */
-
-function closeCart() {
-
-    document.getElementById("cartPanel").classList.remove("show");
-
-    document.getElementById("cartOverlay").classList.remove("show");
-
-}
-
-
-/* =========================
-   WHATSAPP ORDER
-========================= */
-
-function sendWhatsAppOrder() {
-
-    if (cart.length === 0) {
-
-        alert("Your cart is empty. Please add some food first.");
-
+    if (!cart[index]) {
         return;
     }
 
+    cart[index].quantity--;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+}
+
+// =========================
+// REMOVE FROM CART
+// =========================
+
+function removeFromCart(index) {
+
+    if (cart[index]) {
+
+        const itemName = cart[index].name;
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+        alert(itemName + " removed from cart.");
+    }
+}
+
+// =========================
+// OPEN CART
+// =========================
+
+function openCart() {
+
+    const overlay = document.getElementById("cartOverlay");
+    const panel = document.getElementById("cartPanel");
+
+    if (overlay) {
+        overlay.classList.add("show");
+    }
+
+    if (panel) {
+        panel.classList.add("show");
+    }
+
+    updateCart();
+}
+
+// =========================
+// CLOSE CART
+// =========================
+
+function closeCart() {
+
+    const overlay = document.getElementById("cartOverlay");
+    const panel = document.getElementById("cartPanel");
+
+    if (overlay) {
+        overlay.classList.remove("show");
+    }
+
+    if (panel) {
+        panel.classList.remove("show");
+    }
+}
+
+// =========================
+// CLEAR CART
+// =========================
+
+function clearCart() {
+
+    if (cart.length === 0) {
+        alert("Your cart is already empty.");
+        return;
+    }
+
+    cart = [];
+
+    updateCart();
+
+    alert("Cart cleared.");
+}
+
+// =========================
+// WHATSAPP ORDER
+// =========================
+
+function orderOnWhatsApp() {
+
+    if (cart.length === 0) {
+
+        alert("Please add some items to your cart first.");
+
+        return;
+    }
 
     let message = "Hello Spice Garden Restaurant!%0A%0A";
     message += "I would like to order:%0A%0A";
 
-
     let total = 0;
-
 
     cart.forEach(function (item) {
 
         const itemTotal = item.price * item.quantity;
 
-        total += itemTotal;
-
-
         message +=
-            "🍽️ " +
             item.name +
             " × " +
             item.quantity +
@@ -275,114 +349,111 @@ function sendWhatsAppOrder() {
             itemTotal +
             "%0A";
 
+        total += itemTotal;
     });
 
+    message += "%0ATotal: ₹" + total;
 
-    message += "%0A💰 Total: ₹" + total;
-
-    message += "%0A%0APlease confirm my order.";
-
-
-    const phoneNumber = "910000000000";
+    // Replace this number with the restaurant's real WhatsApp number.
+    const restaurantNumber = "910000000000";
 
     const whatsappURL =
         "https://wa.me/" +
-        phoneNumber +
+        restaurantNumber +
         "?text=" +
         message;
 
-
     window.open(whatsappURL, "_blank");
-
 }
 
+// =========================
+// REVIEW BUTTON
+// =========================
 
-/* =========================
-   BOOKING
-========================= */
+function writeReview() {
 
-const bookingForm =
-    document.getElementById("bookingForm");
+    const email = "restaurant@example.com";
 
+    const subject = encodeURIComponent(
+        "Spice Garden Restaurant Review"
+    );
 
-bookingForm.addEventListener("submit", function (event) {
+    const body = encodeURIComponent(
+        "Hello Spice Garden Restaurant,\n\n" +
+        "My review:\n\n"
+    );
 
-    event.preventDefault();
+    window.location.href =
+        "mailto:" +
+        email +
+        "?subject=" +
+        subject +
+        "&body=" +
+        body;
+}
 
+// =========================
+// SMOOTH SCROLL
+// =========================
 
-    const name =
-        document.getElementById("bookingName").value;
+function goToSection(sectionId) {
 
-    const phone =
-        document.getElementById("bookingPhone").value;
+    const section = document.getElementById(sectionId);
 
-    const date =
-        document.getElementById("bookingDate").value;
+    if (section) {
 
-    const time =
-        document.getElementById("bookingTime").value;
-
-    const members =
-        document.getElementById("bookingMembers").value;
-
-    const request =
-        document.getElementById("bookingRequest").value;
-
-
-    let message =
-        "Hello Spice Garden Restaurant!%0A%0A";
-
-    message += "📅 TABLE BOOKING REQUEST%0A%0A";
-
-    message += "Name: " + encodeURIComponent(name) + "%0A";
-
-    message += "Phone: " + encodeURIComponent(phone) + "%0A";
-
-    message += "Date: " + encodeURIComponent(date) + "%0A";
-
-    message += "Time: " + encodeURIComponent(time) + "%0A";
-
-    message += "Members: " + encodeURIComponent(members) + "%0A";
-
-
-    if (request.trim() !== "") {
-
-        message +=
-            "Special Request: " +
-            encodeURIComponent(request) +
-            "%0A";
-
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
     }
 
+    const navigation = document.getElementById("navMenu");
 
-    message += "%0APlease confirm my table booking.";
+    if (navigation) {
+        navigation.classList.remove("show");
+    }
+}
 
+// =========================
+// CLOSE CART WHEN CLICKING
+// OUTSIDE THE CART
+// =========================
 
-    const phoneNumber = "910000000000";
+document.addEventListener("click", function (event) {
 
+    const overlay = document.getElementById("cartOverlay");
+    const panel = document.getElementById("cartPanel");
 
-    const whatsappURL =
-        "https://wa.me/" +
-        phoneNumber +
-        "?text=" +
-        message;
-
-
-    window.open(whatsappURL, "_blank");
+    if (
+        overlay &&
+        panel &&
+        event.target === overlay
+    ) {
+        closeCart();
+    }
 
 });
 
+// =========================
+// SET MINIMUM BOOKING DATE
+// =========================
 
-/* =========================
-   DATE
-========================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-const bookingDate =
-    document.getElementById("bookingDate");
+    const dateInput = document.getElementById("bookingDate");
 
+    if (dateInput) {
 
-const today =
-    new Date().toISOString().split("T")[0];
+        const today = new Date();
 
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
 
-bookingDate.min = today;
+        dateInput.min =
+            year + "-" +
+            month + "-" +
+            day;
+    }
+
+});
