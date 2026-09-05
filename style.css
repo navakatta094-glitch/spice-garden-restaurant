@@ -26,21 +26,19 @@ select {
 }
 
 
-/* =========================
-   TOP BAR
-========================= */
+/* ================= HEADER ================= */
 
 .topbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #17100c;
     min-height: 75px;
     padding: 0 5%;
+    background: #17100c;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 20px rgba(0,0,0,.25);
 }
 
 .brand {
@@ -61,6 +59,7 @@ select {
 }
 
 .brand small {
+    display: block;
     color: #ddd;
     letter-spacing: 2px;
     font-size: 9px;
@@ -69,13 +68,13 @@ select {
 #navMenu {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 22px;
 }
 
 #navMenu a {
     color: white;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 #navMenu a:hover {
@@ -110,9 +109,7 @@ select {
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero {
     min-height: 650px;
@@ -132,15 +129,15 @@ select {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(20, 9, 4, 0.65);
+    background: rgba(15,7,3,.67);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    color: white;
     max-width: 850px;
     padding: 30px 20px;
+    color: white;
 }
 
 .eyebrow {
@@ -157,7 +154,7 @@ select {
 
 .hero h1 {
     font-family: Georgia, serif;
-    font-size: clamp(40px, 7vw, 72px);
+    font-size: clamp(40px,7vw,72px);
     line-height: 1.08;
     margin-bottom: 25px;
 }
@@ -182,7 +179,7 @@ select {
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
     border: 2px solid transparent;
 }
 
@@ -207,9 +204,7 @@ select {
 }
 
 
-/* =========================
-   QUICK ACTIONS
-========================= */
+/* ================= QUICK ACTIONS ================= */
 
 .quick-actions {
     max-width: 1100px;
@@ -218,9 +213,9 @@ select {
     z-index: 5;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 35px rgba(0,0,0,.12);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     overflow: hidden;
 }
 
@@ -251,9 +246,7 @@ select {
 }
 
 
-/* =========================
-   MENU
-========================= */
+/* ================= MENU ================= */
 
 .menu-section {
     max-width: 1200px;
@@ -311,7 +304,7 @@ select {
 
 .food-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 25px;
 }
 
@@ -319,13 +312,12 @@ select {
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
+    box-shadow: 0 5px 25px rgba(0,0,0,.08);
+    transition: .3s;
 }
 
 .food-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
 }
 
 .food-card img {
@@ -399,9 +391,7 @@ select {
 }
 
 
-/* =========================
-   BOOKING
-========================= */
+/* ================= BOOKING ================= */
 
 .booking-section {
     background: #f1e5d7;
@@ -451,7 +441,13 @@ select {
     background: white;
     padding: 30px;
     border-radius: 18px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 35px rgba(0,0,0,.1);
+}
+
+.booking-form h3 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 15px;
 }
 
 .booking-form label {
@@ -490,9 +486,7 @@ select {
 }
 
 
-/* =========================
-   REVIEWS
-========================= */
+/* ================= REVIEWS ================= */
 
 .reviews-section {
     padding: 90px 25px;
@@ -503,7 +497,7 @@ select {
 
 .review-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 25px;
     margin-bottom: 35px;
 }
@@ -512,7 +506,7 @@ select {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 5px 25px rgba(0,0,0,.07);
 }
 
 .stars {
@@ -536,9 +530,7 @@ select {
 }
 
 
-/* =========================
-   ORDER
-========================= */
+/* ================= ORDER ================= */
 
 .order-section {
     padding: 80px 25px;
@@ -546,10 +538,19 @@ select {
     background: #f6efe7;
 }
 
+.order-section h2 {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
 
-/* =========================
-   CONTACT
-========================= */
+.order-section p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+
+/* ================= CONTACT ================= */
 
 .contact-section {
     background: #21130d;
@@ -586,10 +587,28 @@ select {
     font-weight: bold;
 }
 
+.contact-box {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    padding: 35px;
+    border-radius: 20px;
+}
 
-/* =========================
-   FOOTER
-========================= */
+.contact-box span {
+    font-size: 30px;
+}
+
+.contact-box h3 {
+    margin: 8px 0 3px;
+}
+
+.contact-box p {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+
+/* ================= FOOTER ================= */
 
 footer {
     background: #110a07;
@@ -602,18 +621,21 @@ footer {
     color: #e9ad4b;
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: 5px;
+}
+
+.demo-note {
+    font-size: 11px;
+    margin-top: 5px;
+    color: #777;
 }
 
 
-/* =========================
-   CART
-========================= */
+/* ================= CART ================= */
 
 .cart-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0,0,0,.55);
     z-index: 1998;
     display: none;
 }
@@ -626,14 +648,14 @@ footer {
     position: fixed;
     top: 0;
     right: -430px;
-    width: min(430px, 100%);
+    width: min(430px,100%);
     height: 100vh;
     background: white;
     z-index: 1999;
     display: flex;
     flex-direction: column;
-    transition: right 0.3s ease;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+    transition: right .3s ease;
+    box-shadow: -5px 0 25px rgba(0,0,0,.2);
 }
 
 .cart-panel.show {
@@ -732,9 +754,7 @@ footer {
 }
 
 
-/* =========================
-   FLOATING WHATSAPP
-========================= */
+/* ================= FLOATING WHATSAPP ================= */
 
 .floating-whatsapp {
     position: fixed;
@@ -750,13 +770,11 @@ footer {
     justify-content: center;
     font-size: 28px;
     z-index: 900;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media (max-width: 850px) {
 
@@ -773,7 +791,7 @@ footer {
         display: none;
         flex-direction: column;
         padding: 20px;
-        gap: 18px;
+        gap: 12px;
         align-items: stretch;
     }
 
@@ -798,7 +816,7 @@ footer {
     }
 
     .food-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .booking-container,
