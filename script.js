@@ -13,9 +13,11 @@ menuToggle.addEventListener("click", function () {
 /* Close mobile menu after clicking a link */
 
 document.querySelectorAll("#navMenu a").forEach(function (link) {
+
     link.addEventListener("click", function () {
         navMenu.classList.remove("show");
     });
+
 });
 
 
@@ -29,13 +31,15 @@ function showCategory(categoryId, button) {
         category.classList.remove("active-category");
     });
 
+    document.getElementById(categoryId).classList.add("active-category");
+
+
     document.querySelectorAll(".category").forEach(function (btn) {
         btn.classList.remove("active");
     });
 
-    document.getElementById(categoryId).classList.add("active-category");
-
     button.classList.add("active");
+
 }
 
 
@@ -46,57 +50,48 @@ function showCategory(categoryId, button) {
 let cart = [];
 
 
+/* Add item */
+
 function addToCart(name, price) {
 
     const existingItem = cart.find(function (item) {
         return item.name === name;
     });
 
+
     if (existingItem) {
+
         existingItem.quantity++;
+
     } else {
+
         cart.push({
             name: name,
             price: price,
             quantity: 1
         });
+
     }
+
 
     updateCart();
 
     openCart();
+
 }
 
 
-function increaseQuantity(index) {
-    cart[index].quantity++;
-    updateCart();
-}
-
-
-function decreaseQuantity(index) {
-
-    if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-    } else {
-        cart.splice(index, 1);
-    }
-
-    updateCart();
-}
-
-
-function removeItem(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
+/* Update cart */
 
 function updateCart() {
 
     const cartItems = document.getElementById("cartItems");
     const cartCount = document.getElementById("cartCount");
     const cartTotal = document.getElementById("cartTotal");
+
+
+    cartItems.innerHTML = "";
+
 
     if (cart.length === 0) {
 
@@ -111,67 +106,135 @@ function updateCart() {
 
 
     let total = 0;
-    let itemCount = 0;
-
-    cartItems.innerHTML = "";
+    let count = 0;
 
 
     cart.forEach(function (item, index) {
 
-        const itemTotal = item.price * item.quantity;
+        total += item.price * item.quantity;
+        count += item.quantity;
 
-        total += itemTotal;
-        itemCount += item.quantity;
 
         const itemElement = document.createElement("div");
 
         itemElement.className = "cart-item";
 
+
         itemElement.innerHTML = `
+
             <div class="cart-item-info">
+
                 <strong>${item.name}</strong>
-                <small>₹${item.price} each</small>
+
+                <small>
+                    ₹${item.price} × ${item.quantity}
+                </small>
 
                 <div class="quantity-controls">
-                    <button onclick="decreaseQuantity(${index})">−</button>
+
+                    <button onclick="decreaseQuantity(${index})">
+                        −
+                    </button>
+
                     <span>${item.quantity}</span>
-                    <button onclick="increaseQuantity(${index})">+</button>
+
+                    <button onclick="increaseQuantity(${index})">
+                        +
+                    </button>
+
                 </div>
+
             </div>
 
             <div>
-                <strong>₹${itemTotal}</strong>
+
+                <strong>
+                    ₹${item.price * item.quantity}
+                </strong>
+
                 <br>
-                <button class="remove-item" onclick="removeItem(${index})">
+
+                <button
+                    class="remove-item"
+                    onclick="removeItem(${index})">
                     Remove
                 </button>
+
             </div>
         `;
 
+
         cartItems.appendChild(itemElement);
+
     });
 
 
-    cartCount.textContent = itemCount;
+    cartCount.textContent = count;
     cartTotal.textContent = total;
+
 }
 
 
-/* =========================
-   OPEN / CLOSE CART
-========================= */
+/* Increase */
+
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+
+/* Decrease */
+
+function decreaseQuantity(index) {
+
+    cart[index].quantity--;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* Remove */
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* Open cart */
 
 function openCart() {
 
     document.getElementById("cartPanel").classList.add("show");
+
     document.getElementById("cartOverlay").classList.add("show");
+
 }
 
+
+/* Close cart */
 
 function closeCart() {
 
     document.getElementById("cartPanel").classList.remove("show");
+
     document.getElementById("cartOverlay").classList.remove("show");
+
 }
 
 
@@ -179,18 +242,22 @@ function closeCart() {
    WHATSAPP ORDER
 ========================= */
 
-function orderOnWhatsApp() {
+function sendWhatsAppOrder() {
 
     if (cart.length === 0) {
-        alert("Your cart is empty. Please add some items first.");
+
+        alert("Your cart is empty. Please add some food first.");
+
         return;
     }
 
 
     let message = "Hello Spice Garden Restaurant!%0A%0A";
-    message += "*New Food Order*%0A%0A";
+    message += "I would like to order:%0A%0A";
+
 
     let total = 0;
+
 
     cart.forEach(function (item) {
 
@@ -198,44 +265,44 @@ function orderOnWhatsApp() {
 
         total += itemTotal;
 
+
         message +=
-            "• " +
+            "🍽️ " +
             item.name +
             " × " +
             item.quantity +
             " = ₹" +
             itemTotal +
             "%0A";
+
     });
 
 
-    message += "%0A*Total: ₹" + total + "*";
+    message += "%0A💰 Total: ₹" + total;
+
     message += "%0A%0APlease confirm my order.";
 
 
-    /*
-       IMPORTANT:
-       Replace 910000000000 below with the
-       restaurant's real WhatsApp number.
-    */
-
-    const whatsappNumber = "910000000000";
+    const phoneNumber = "910000000000";
 
     const whatsappURL =
         "https://wa.me/" +
-        whatsappNumber +
+        phoneNumber +
         "?text=" +
         message;
 
+
     window.open(whatsappURL, "_blank");
+
 }
 
 
 /* =========================
-   TABLE BOOKING
+   BOOKING
 ========================= */
 
-const bookingForm = document.getElementById("bookingForm");
+const bookingForm =
+    document.getElementById("bookingForm");
 
 
 bookingForm.addEventListener("submit", function (event) {
@@ -258,29 +325,45 @@ bookingForm.addEventListener("submit", function (event) {
     const members =
         document.getElementById("bookingMembers").value;
 
+    const request =
+        document.getElementById("bookingRequest").value;
+
 
     let message =
         "Hello Spice Garden Restaurant!%0A%0A";
 
-    message += "*Table Booking Request*%0A%0A";
+    message += "📅 TABLE BOOKING REQUEST%0A%0A";
 
     message += "Name: " + encodeURIComponent(name) + "%0A";
+
     message += "Phone: " + encodeURIComponent(phone) + "%0A";
+
     message += "Date: " + encodeURIComponent(date) + "%0A";
+
     message += "Time: " + encodeURIComponent(time) + "%0A";
-    message += "Members: " + encodeURIComponent(members);
+
+    message += "Members: " + encodeURIComponent(members) + "%0A";
 
 
-    /*
-       Replace this number with the restaurant's
-       real WhatsApp number.
-    */
+    if (request.trim() !== "") {
 
-    const whatsappNumber = "910000000000";
+        message +=
+            "Special Request: " +
+            encodeURIComponent(request) +
+            "%0A";
+
+    }
+
+
+    message += "%0APlease confirm my table booking.";
+
+
+    const phoneNumber = "910000000000";
+
 
     const whatsappURL =
         "https://wa.me/" +
-        whatsappNumber +
+        phoneNumber +
         "?text=" +
         message;
 
@@ -291,20 +374,15 @@ bookingForm.addEventListener("submit", function (event) {
 
 
 /* =========================
-   SET MINIMUM BOOKING DATE
+   DATE
 ========================= */
 
 const bookingDate =
     document.getElementById("bookingDate");
 
+
 const today =
     new Date().toISOString().split("T")[0];
 
+
 bookingDate.min = today;
-
-
-/* =========================
-   INITIAL CART
-========================= */
-
-updateCart();
