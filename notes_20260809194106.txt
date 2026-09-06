@@ -1,182 +1,245 @@
-08.02 20:33
-#include <stdio.h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-#define MAX 100
+    <title>Page Not Found | Spice Garden Restaurant</title>
 
-int minHeap[MAX], maxHeap[MAX];
-int minSize = 0, maxSize = 0;
+    <meta name="description" content="The page you are looking for could not be found. Visit Spice Garden Restaurant home page.">
 
-/* Swap Function */
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ---------- MIN HEAP ---------- */
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* Insert into Min Heap */
-void insertMinHeap(int value)
-{
-    int i = minSize++;
-    minHeap[i] = value;
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.88)),
+                url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+        }
 
-    while (i != 0 && minHeap[(i - 1) / 2] > minHeap[i])
-    {
-        swap(&minHeap[i], &minHeap[(i - 1) / 2]);
-        i = (i - 1) / 2;
-    }
-}
+        /* HEADER */
+        header {
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+        }
 
-/* Heapify Min Heap */
-void minHeapify(int i)
-{
-    int smallest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+        .logo {
+            color: #d4af37;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-    if (left < minSize && minHeap[left] < minHeap[smallest])
-        smallest = left;
+        .home-link {
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid #d4af37;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
 
-    if (right < minSize && minHeap[right] < minHeap[smallest])
-        smallest = right;
+        .home-link:hover {
+            background: #d4af37;
+            color: #000000;
+        }
 
-    if (smallest != i)
-    {
-        swap(&minHeap[i], &minHeap[smallest]);
-        minHeapify(smallest);
-    }
-}
+        /* MAIN */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
 
-/* Delete Element from Min Heap */
-void deleteMinHeap(int value)
-{
-    int i;
+        .error-box {
+            width: 100%;
+            max-width: 700px;
+            padding: 50px 30px;
+            background: rgba(15, 15, 15, 0.82);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+        }
 
-    for (i = 0; i < minSize; i++)
-    {
-        if (minHeap[i] == value)
-            break;
-    }
+        .error-number {
+            font-size: clamp(90px, 20vw, 170px);
+            line-height: 1;
+            font-weight: 800;
+            color: #d4af37;
+            letter-spacing: 5px;
+            text-shadow: 0 5px 25px rgba(212, 175, 55, 0.25);
+        }
 
-    if (i == minSize)
-    {
-        printf("Element not found in Min Heap\n");
-        return;
-    }
+        h1 {
+            margin-top: 15px;
+            font-size: clamp(28px, 5vw, 45px);
+        }
 
-    minHeap[i] = minHeap[minSize - 1];
-    minSize--;
+        .message {
+            margin: 18px auto 30px;
+            max-width: 520px;
+            color: #cccccc;
+            line-height: 1.7;
+            font-size: 17px;
+        }
 
-    minHeapify(i);
-}
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-/* Display Min Heap */
-void displayMinHeap()
-{
-    printf("\nMin Heap:\n");
-    for (int i = 0; i < minSize; i++)
-        printf("%d ", minHeap[i]);
-    printf("\n");
-}/* ---------- MAX HEAP ---------- */
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
 
-/* Insert into Max Heap */
-void insertMaxHeap(int value)
-{
-    int i = maxSize++;
-    maxHeap[i] = value;
+        .btn-primary {
+            background: #d4af37;
+            color: #000000;
+        }
 
-    while (i != 0 && maxHeap[(i - 1) / 2] < maxHeap[i])
-    {
-        swap(&maxHeap[i], &maxHeap[(i - 1) / 2]);
-        i = (i - 1) / 2;
-    }
-}
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+        }
 
-/* Heapify Max Heap */
-void maxHeapify(int i)
-{
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+        .btn-secondary {
+            border: 1px solid #d4af37;
+            color: #ffffff;
+        }
 
-    if (left < maxSize && maxHeap[left] > maxHeap[largest])
-        largest = left;
+        .btn-secondary:hover {
+            background: #d4af37;
+            color: #000000;
+        }
 
-    if (right < maxSize && maxHeap[right] > maxHeap[largest])
-        largest = right;
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            color: #aaaaaa;
+            font-size: 14px;
+        }
 
-    if (largest != i)
-    {
-        swap(&maxHeap[i], &maxHeap[largest]);
-        maxHeapify(largest);
-    }
-}
+        footer span {
+            color: #d4af37;
+        }
 
-/* Delete Element from Max Heap */
-void deleteMaxHeap(int value)
-{
-    int i;
+        /* MOBILE */
+        @media (max-width: 600px) {
 
-    for (i = 0; i < maxSize; i++)
-    {
-        if (maxHeap[i] == value)
-            break;
-    }
+            header {
+                padding: 15px 5%;
+            }
 
-    if (i == maxSize)
-    {
-        printf("Element not found in Max Heap\n");
-        return;
-    }
+            .logo {
+                font-size: 20px;
+            }
 
-    maxHeap[i] = maxHeap[maxSize - 1];
-    maxSize--;
+            .home-link {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
 
-    maxHeapify(i);
-}
+            .error-box {
+                padding: 40px 20px;
+            }
 
-/* Display Max Heap */
-void displayMaxHeap()
-{
-    printf("\nMax Heap:\n");
+            .message {
+                font-size: 15px;
+            }
 
-    for (int i = 0; i < maxSize; i++)
-        printf("%d ", maxHeap[i]);
+            .buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
 
-    printf("\n");
-}/* ---------- MAIN ---------- */
-int main()
-{
-    int n, value, del;
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
 
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
+<body>
 
-    printf("Enter elements:\n");
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Spice Garden</div>
 
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%d", &value);
+        <a href="index.html" class="home-link">
+            Home
+        </a>
+    </header>
 
-        insertMinHeap(value);
-        insertMaxHeap(value);
-    }
 
-    displayMinHeap();
-    displayMaxHeap();
+    <!-- 404 CONTENT -->
+    <main>
 
-    printf("\nEnter element to delete: ");
-    scanf("%d", &del);
+        <div class="error-box">
 
-    deleteMinHeap(del);
-    deleteMaxHeap(del);
+            <div class="error-number">404</div>
 
-    printf("\nAfter Deletion:\n");
+            <h1>Page Not Found</h1>
 
-    displayMinHeap();
-    displayMaxHeap();
+            <p class="message">
+                Oops! The page you're looking for doesn't exist or may have
+                been moved. Don't worry — let's get you back to Spice Garden.
+            </p>
 
-    return 0;
-}
+            <div class="buttons">
+
+                <a href="index.html" class="btn btn-primary">
+                    🏠 Back to Home
+                </a>
+
+                <a href="index.html#menu" class="btn btn-secondary">
+                    🍽️ View Menu
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 <span>Spice Garden Restaurant</span>. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
