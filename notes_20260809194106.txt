@@ -1,0 +1,182 @@
+08.02 20:33
+#include <stdio.h>
+
+#define MAX 100
+
+int minHeap[MAX], maxHeap[MAX];
+int minSize = 0, maxSize = 0;
+
+/* Swap Function */
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+/* ---------- MIN HEAP ---------- */
+
+/* Insert into Min Heap */
+void insertMinHeap(int value)
+{
+    int i = minSize++;
+    minHeap[i] = value;
+
+    while (i != 0 && minHeap[(i - 1) / 2] > minHeap[i])
+    {
+        swap(&minHeap[i], &minHeap[(i - 1) / 2]);
+        i = (i - 1) / 2;
+    }
+}
+
+/* Heapify Min Heap */
+void minHeapify(int i)
+{
+    int smallest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < minSize && minHeap[left] < minHeap[smallest])
+        smallest = left;
+
+    if (right < minSize && minHeap[right] < minHeap[smallest])
+        smallest = right;
+
+    if (smallest != i)
+    {
+        swap(&minHeap[i], &minHeap[smallest]);
+        minHeapify(smallest);
+    }
+}
+
+/* Delete Element from Min Heap */
+void deleteMinHeap(int value)
+{
+    int i;
+
+    for (i = 0; i < minSize; i++)
+    {
+        if (minHeap[i] == value)
+            break;
+    }
+
+    if (i == minSize)
+    {
+        printf("Element not found in Min Heap\n");
+        return;
+    }
+
+    minHeap[i] = minHeap[minSize - 1];
+    minSize--;
+
+    minHeapify(i);
+}
+
+/* Display Min Heap */
+void displayMinHeap()
+{
+    printf("\nMin Heap:\n");
+    for (int i = 0; i < minSize; i++)
+        printf("%d ", minHeap[i]);
+    printf("\n");
+}/* ---------- MAX HEAP ---------- */
+
+/* Insert into Max Heap */
+void insertMaxHeap(int value)
+{
+    int i = maxSize++;
+    maxHeap[i] = value;
+
+    while (i != 0 && maxHeap[(i - 1) / 2] < maxHeap[i])
+    {
+        swap(&maxHeap[i], &maxHeap[(i - 1) / 2]);
+        i = (i - 1) / 2;
+    }
+}
+
+/* Heapify Max Heap */
+void maxHeapify(int i)
+{
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < maxSize && maxHeap[left] > maxHeap[largest])
+        largest = left;
+
+    if (right < maxSize && maxHeap[right] > maxHeap[largest])
+        largest = right;
+
+    if (largest != i)
+    {
+        swap(&maxHeap[i], &maxHeap[largest]);
+        maxHeapify(largest);
+    }
+}
+
+/* Delete Element from Max Heap */
+void deleteMaxHeap(int value)
+{
+    int i;
+
+    for (i = 0; i < maxSize; i++)
+    {
+        if (maxHeap[i] == value)
+            break;
+    }
+
+    if (i == maxSize)
+    {
+        printf("Element not found in Max Heap\n");
+        return;
+    }
+
+    maxHeap[i] = maxHeap[maxSize - 1];
+    maxSize--;
+
+    maxHeapify(i);
+}
+
+/* Display Max Heap */
+void displayMaxHeap()
+{
+    printf("\nMax Heap:\n");
+
+    for (int i = 0; i < maxSize; i++)
+        printf("%d ", maxHeap[i]);
+
+    printf("\n");
+}/* ---------- MAIN ---------- */
+int main()
+{
+    int n, value, del;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &value);
+
+        insertMinHeap(value);
+        insertMaxHeap(value);
+    }
+
+    displayMinHeap();
+    displayMaxHeap();
+
+    printf("\nEnter element to delete: ");
+    scanf("%d", &del);
+
+    deleteMinHeap(del);
+    deleteMaxHeap(del);
+
+    printf("\nAfter Deletion:\n");
+
+    displayMinHeap();
+    displayMaxHeap();
+
+    return 0;
+}
