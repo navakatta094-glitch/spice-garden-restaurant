@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Spice Garden Restaurant</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#fff;background:linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;display:flex;flex-direction:column}
+header{padding:18px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(212,175,55,.35);background:rgba(0,0,0,.65);backdrop-filter:blur(8px)}
+.logo{color:#d4af37;font-size:25px;font-weight:700;letter-spacing:1px}
+.home-link{color:#fff;text-decoration:none;border:1px solid #d4af37;padding:10px 20px;border-radius:25px;transition:.3s}
+.home-link:hover{background:#d4af37;color:#000}
+main{flex:1;display:flex;justify-content:center;align-items:center;text-align:center;padding:50px 20px}
+.error-box{width:100%;max-width:700px;padding:50px 30px;background:rgba(15,15,15,.82);border:1px solid rgba(212,175,55,.45);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);backdrop-filter:blur(8px)}
+.error-number{font-size:clamp(90px,20vw,170px);line-height:1;font-weight:800;color:#d4af37;letter-spacing:5px}
+h1{margin-top:15px;font-size:clamp(28px,5vw,45px)}
+.message{margin:18px auto 30px;max-width:520px;color:#ccc;line-height:1.7;font-size:17px}
+.buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 25px;border-radius:30px;text-decoration:none;font-weight:700;transition:.3s}
+.btn-primary{background:#d4af37;color:#000}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{border:1px solid #d4af37;color:#fff}
+.btn-secondary:hover{background:#d4af37;color:#000}
+footer{text-align:center;padding:20px;background:rgba(0,0,0,.75);border-top:1px solid rgba(212,175,55,.25);color:#aaa;font-size:14px}
+footer span{color:#d4af37}
+@media(max-width:600px){header{padding:15px 5%}.logo{font-size:20px}.home-link{padding:8px 15px;font-size:14px}.error-box{padding:40px 20px}.message{font-size:15px}.buttons{flex-direction:column}.btn{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="logo">Spice Garden</div><a href="index.html" class="home-link">Home</a></header>
+<main>
+<div class="error-box">
+<div class="error-number">404</div>
+<h1>Page Not Found</h1>
+<p class="message">Oops! The page you're looking for doesn't exist or may have been moved. Don't worry — let's get you back to Spice Garden.</p>
+<div class="buttons">
+<a href="index.html" class="btn btn-primary">🏠 Back to Home</a>
+<a href="index.html#menu" class="btn btn-secondary">🍽️ View Menu</a>
+</div>
+</div>
+</main>
+<footer>© 2026 <span>Spice Garden Restaurant</span>. All Rights Reserved.</footer>
+</body>
+</html>
