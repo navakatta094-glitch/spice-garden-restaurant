@@ -1,6 +1,8 @@
-/* =========================================
-   SPICE GARDEN RESTAURANT - STYLE SHEET
-   ========================================= */
+/* =========================================================
+   SPICE GARDEN RESTAURANT
+   FINAL style.css
+   PART 1 — BASIC + HEADER
+   ========================================================= */
 
 * {
     margin: 0;
@@ -10,6 +12,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -36,14 +39,19 @@ textarea {
     font: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
 img {
     max-width: 100%;
     display: block;
 }
 
-/* =========================================
-   TOP BAR / HEADER
-   ========================================= */
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .topbar {
     position: sticky;
@@ -52,290 +60,585 @@ img {
     width: 100%;
     min-height: 70px;
     padding: 12px 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background: rgba(8, 8, 8, 0.96);
+
+    background: rgba(8, 8, 8, 0.98);
     border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-    backdrop-filter: blur(10px);
+
+    backdrop-filter: blur(12px);
 }
 
-.logo {
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     color: #d4af37;
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
     white-space: nowrap;
+}
+
+.brand-icon {
+    font-size: 28px;
+}
+
+.brand strong {
+    display: block;
+
+    font-size: 23px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.brand small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #a7a7a7;
+
+    font-size: 9px;
+    letter-spacing: 3px;
 }
 
 .menu-toggle {
     display: none;
+
     border: 1px solid #d4af37;
+
     background: transparent;
     color: #ffffff;
+
     font-size: 24px;
-    padding: 7px 11px;
+
+    padding: 5px 11px;
+
     border-radius: 8px;
-    cursor: pointer;
 }
 
-.nav-menu {
+#navMenu {
     display: flex;
     align-items: center;
-    gap: 24px;
+
+    gap: 22px;
 }
 
-.nav-menu a {
+#navMenu > a {
     color: #eeeeee;
+
     font-size: 15px;
     font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+#navMenu > a:hover {
+    color: #d4af37;
+}
+
+.nav-cart {
+    border: 1px solid #d4af37;
+
+    background: #d4af37;
+    color: #000000;
+
+    padding: 9px 15px;
+
+    border-radius: 22px;
+
+    font-weight: 800;
+
     transition: 0.25s ease;
 }
 
-.nav-menu a:hover {
-    color: #d4af37;
+.nav-cart:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 20px rgba(212, 175, 55, 0.22);
 }
 
-/* =========================================
-   HERO
-   ========================================= */
+#cartCount {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 21px;
+    height: 21px;
+
+    padding: 0 5px;
+
+    margin-left: 3px;
+
+    border-radius: 50%;
+
+    background: #111111;
+    color: #d4af37;
+
+    font-size: 12px;
+   }
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
 
 .hero {
+    position: relative;
+
     min-height: 78vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
-    padding: 90px 6%;
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.72)),
-        url("https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=2000&q=85")
-        center/cover no-repeat;
-    position: relative;
+
+    padding: 100px 6%;
+
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=2000&q=85");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.15)
+    );
+
+    pointer-events: none;
 }
 
 .hero-content {
+    position: relative;
+
+    z-index: 1;
+
     width: 100%;
+
     max-width: 900px;
 }
 
-.hero h1 {
-    font-size: clamp(40px, 7vw, 76px);
-    line-height: 1.08;
-    margin-bottom: 18px;
-    font-weight: 800;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
-}
-
-.hero h1 span {
+.eyebrow {
     color: #d4af37;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
 }
 
-.hero p {
-    max-width: 720px;
+.hero h1 {
+    color: #ffffff;
+
+    font-size: clamp(42px, 7vw, 78px);
+
+    line-height: 1.06;
+
+    margin-bottom: 20px;
+
+    font-weight: 800;
+
+    text-shadow:
+        0 4px 25px rgba(0, 0, 0, 0.75);
+}
+
+.hero-text {
+    max-width: 700px;
+
     margin: 0 auto 30px;
+
     color: #eeeeee;
+
     font-size: clamp(16px, 2vw, 20px);
 }
 
 .hero-buttons {
     display: flex;
+
     justify-content: center;
+
     gap: 14px;
+
     flex-wrap: wrap;
-}
-
-/* =========================================
-   GENERAL BUTTONS
-   ========================================= */
-
-.btn,
-button {
-    cursor: pointer;
 }
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    padding: 11px 23px;
+
+    min-height: 47px;
+
+    padding: 11px 24px;
+
     border-radius: 28px;
-    font-weight: 700;
+
     border: 1px solid #d4af37;
+
+    font-weight: 800;
+
     transition: 0.25s ease;
 }
 
 .btn-primary {
     background: #d4af37;
+
     color: #000000;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(212, 175, 55, 0.22);
+
+    box-shadow:
+        0 8px 24px rgba(212, 175, 55, 0.25);
 }
 
 .btn-outline {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.28);
+
     color: #ffffff;
 }
 
 .btn-outline:hover {
     background: #d4af37;
+
     color: #000000;
 }
 
-/* =========================================
+
+/* =========================================================
    QUICK ACTIONS
-   ========================================= */
+   ========================================================= */
 
 .quick-actions {
-    padding: 28px 6%;
-    background: #111111;
-}
+    max-width: 1150px;
 
-.quick-actions-inner {
-    max-width: 1100px;
-    margin: auto;
+    margin: -35px auto 0;
+
+    position: relative;
+
+    z-index: 5;
+
+    padding: 0 6%;
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 16px;
 }
 
-.quick-action {
-    padding: 20px;
+.quick-actions button {
+    min-height: 105px;
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
     text-align: center;
-    border: 1px solid rgba(212, 175, 55, 0.28);
-    border-radius: 14px;
+
+    border: 1px solid rgba(212, 175, 55, 0.3);
+
+    border-radius: 15px;
+
     background: #151515;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3);
+
     transition: 0.25s ease;
 }
 
-.quick-action:hover {
-    transform: translateY(-3px);
+.quick-actions button:hover {
+    transform: translateY(-4px);
+
     border-color: #d4af37;
 }
 
-.quick-action h3 {
-    color: #d4af37;
-    margin-bottom: 5px;
+.quick-actions button span {
+    font-size: 24px;
+
+    margin-bottom: 4px;
 }
 
-/* =========================================
-   SECTION COMMON
-   ========================================= */
+.quick-actions button strong {
+    color: #d4af37;
+
+    font-size: 16px;
+}
+
+.quick-actions button small {
+    color: #999999;
+
+    margin-top: 2px;
+   }
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
 
 section {
-    padding: 75px 6%;
+    padding: 80px 6%;
 }
 
+.section-heading,
 .section-title {
+    max-width: 800px;
+
+    margin: 0 auto 42px;
+
     text-align: center;
-    margin-bottom: 42px;
 }
 
+.section-heading h2,
 .section-title h2 {
+    color: #ffffff;
+
     font-size: clamp(30px, 5vw, 45px);
+
+    line-height: 1.15;
+
     margin-bottom: 10px;
 }
 
-.section-title span {
-    color: #d4af37;
-}
-
-.section-title p {
+.section-heading > p:last-child,
+.section-title > p:last-child {
     color: #aaaaaa;
-    max-width: 650px;
-    margin: auto;
 }
 
-/* =========================================
-   FEATURED ITEMS
-   ========================================= */
+.section-heading .eyebrow {
+    margin-bottom: 8px;
+}
 
-.featured {
+
+/* =========================================================
+   FEATURED FOOD SECTION
+   ========================================================= */
+
+.featured-section {
     background: #0b0b0b;
+
+    padding-top: 90px;
 }
 
 .featured-grid {
     max-width: 1150px;
+
     margin: auto;
+
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 20px;
 }
 
 .featured-card {
     overflow: hidden;
-    background: #151515;
+
+    background: #171717;
+
     border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 15px;
+
+    border-radius: 16px;
+
     transition: 0.3s ease;
 }
 
 .featured-card:hover {
     transform: translateY(-5px);
+
     border-color: #d4af37;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.28);
 }
 
 .featured-card img {
     width: 100%;
+
     height: 210px;
+
     object-fit: cover;
 }
 
-.featured-card-content {
+.featured-content {
     padding: 17px;
+
+    background: #171717;
 }
 
-.featured-card h3 {
+.food-tag {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background: rgba(212, 175, 55, 0.13);
+
+    color: #d4af37;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.featured-content h3 {
+    color: #ffffff;
+
     margin-bottom: 6px;
+
+    font-size: 19px;
 }
 
-.featured-card p {
+.featured-content p {
+    min-height: 65px;
+
     color: #aaaaaa;
+
     font-size: 14px;
 }
 
-/* =========================================
-   MENU
-   ========================================= */
+.food-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.food-bottom strong {
+    color: #d4af37;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+.food-bottom button {
+    border: 1px solid #d4af37;
+
+    background: #d4af37;
+
+    color: #000000;
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    font-weight: 800;
+
+    transition: 0.25s ease;
+}
+
+.food-bottom button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(212, 175, 55, 0.18);
+   }
+/* =========================================================
+   MENU SECTION
+   ========================================================= */
 
 .menu-section {
     background: #101010;
 }
 
+
+/* =========================================================
+   MENU CATEGORY BUTTONS
+   ========================================================= */
+
 .category-buttons {
     max-width: 1150px;
-    margin: 0 auto 32px;
+
+    margin: 0 auto 35px;
+
     display: flex;
+
     justify-content: center;
+
     flex-wrap: wrap;
+
     gap: 10px;
 }
 
 .category {
     border: 1px solid rgba(212, 175, 55, 0.45);
+
     background: #171717;
+
     color: #eeeeee;
+
     padding: 10px 17px;
+
     border-radius: 25px;
+
+    font-weight: 700;
+
     transition: 0.25s ease;
 }
 
 .category:hover,
 .category.active {
     background: #d4af37;
+
     color: #000000;
 }
 
+
+/* =========================================================
+   FOOD CATEGORY
+   ========================================================= */
+
 .food-category {
     max-width: 1150px;
+
     margin: auto;
+
     display: none;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 20px;
 }
 
@@ -343,266 +646,605 @@ section {
     display: grid;
 }
 
+
+/* =========================================================
+   FOOD CARD
+   ========================================================= */
+
 .food-card {
     overflow: hidden;
+
     background: #171717;
+
     border: 1px solid rgba(212, 175, 55, 0.2);
+
     border-radius: 15px;
+
     transition: 0.3s ease;
 }
 
 .food-card:hover {
     transform: translateY(-4px);
+
     border-color: #d4af37;
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
 .food-card img {
     width: 100%;
+
     height: 205px;
+
     object-fit: cover;
 }
 
-.food-card-content {
+
+/* =========================================================
+   FOOD INFORMATION
+   ========================================================= */
+
+.food-info {
     padding: 16px;
+
+    background: #171717;
 }
 
-.food-card h3 {
+.food-info h3 {
+    color: #ffffff;
+
     font-size: 18px;
+
     margin-bottom: 5px;
 }
 
-.food-card p {
+.food-info p {
     min-height: 43px;
+
     color: #aaaaaa;
+
     font-size: 13px;
+
     margin-bottom: 12px;
 }
 
-.food-price {
+
+/* =========================================================
+   FOOD PRICE + ADD TO CART
+   Uses .food-bottom from Part 3
+   ========================================================= */
+
+.food-info .food-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.food-info .food-bottom strong {
     color: #d4af37;
+
     font-size: 18px;
+
     font-weight: 800;
 }
 
-.food-card-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.add-cart-btn {
+.food-info .food-bottom button {
     border: 1px solid #d4af37;
+
     background: #d4af37;
+
     color: #000000;
+
     padding: 8px 13px;
+
     border-radius: 20px;
-    font-weight: 700;
+
+    font-weight: 800;
+
     transition: 0.25s ease;
 }
 
-.add-cart-btn:hover {
+.food-info .food-bottom button:hover {
     transform: translateY(-2px);
-}
 
-/* =========================================
-   BOOKING
-   ========================================= */
+    box-shadow:
+        0 5px 15px rgba(212, 175, 55, 0.18);
+}
+/* =========================================================
+   BOOKING / RESERVATION SECTION
+   ========================================================= */
 
 .booking-section {
     background: #0b0b0b;
-    padding-top: 55px;
-    padding-bottom: 55px;
+    padding: 70px 6%;
 }
 
-.booking-container {
-    max-width: 900px;
-    margin: auto;
+.booking-section .section-title {
+    margin-bottom: 30px;
 }
+
+
+/* =========================================================
+   BOOKING FORM
+   ========================================================= */
 
 .booking-form {
-    background: #151515;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 16px;
-    padding: 25px;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+
+    padding: 28px;
+
+    background: #171717;
+
+    border: 1px solid rgba(212, 175, 55, 0.28);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-.booking-grid {
+
+/* =========================================================
+   FORM ROW
+   ========================================================= */
+
+.form-row {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+
+    gap: 18px;
+
+    margin-bottom: 18px;
 }
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
 
 .form-group {
     display: flex;
+
     flex-direction: column;
+
     gap: 7px;
 }
 
-.form-group.full-width {
-    grid-column: 1 / -1;
+.form-group label {
+    color: #d4af37;
+
+    font-size: 14px;
+
+    font-weight: 700;
 }
 
-.form-group label {
-    color: #dddddd;
-    font-size: 14px;
-    font-weight: 600;
-}
+
+/* =========================================================
+   INPUTS / SELECT / TEXTAREA
+   ========================================================= */
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    border: 1px solid #333333;
-    background: #0e0e0e;
-    color: #ffffff;
+
+    padding: 12px 14px;
+
+    border: 1px solid #3a3a3a;
+
     border-radius: 9px;
-    padding: 12px 13px;
+
+    background: #0f0f0f;
+
+    color: #ffffff;
+
     outline: none;
+
+    transition: 0.25s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 2px rgba(212, 175, 55, 0.08);
 }
 
 .form-group textarea {
-    min-height: 90px;
+    min-height: 100px;
+
     resize: vertical;
 }
 
-.booking-submit {
-    margin-top: 18px;
-    border: none;
-    background: #d4af37;
-    color: #000000;
-    padding: 12px 25px;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #777777;
+}
+
+
+/* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+.form-group input[type="date"] {
+    color-scheme: dark;
+}
+
+
+/* =========================================================
+   BOOKING BUTTON
+   ========================================================= */
+
+.gold-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 11px 25px;
+
+    border: 1px solid #d4af37;
+
     border-radius: 25px;
+
+    background: #d4af37;
+
+    color: #000000;
+
     font-weight: 800;
+
+    transition: 0.25s ease;
 }
 
-.booking-submit:hover {
+.gold-btn:hover {
     transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(212, 175, 55, 0.22);
 }
 
-/* =========================================
-   REVIEWS
-   ========================================= */
+
+/* =========================================================
+   BOOKING FORM SUBMIT AREA
+   ========================================================= */
+
+.booking-form > .gold-btn {
+    display: flex;
+
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   SMALL RESERVATION NOTE
+   ========================================================= */
+
+.booking-form::after {
+    content:
+        "We will confirm your table booking request shortly.";
+
+    display: block;
+
+    margin-top: 14px;
+
+    text-align: center;
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   REQUIRED FIELD INDICATOR
+   ========================================================= */
+
+.form-group label::after {
+    content: "";
+}
+
+
+/* =========================================================
+   MOBILE BOOKING FORM
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .booking-section {
+        padding: 55px 5%;
+    }
+
+    .booking-form {
+        padding: 20px;
+
+        border-radius: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 11px 12px;
+    }
+   }
+/* =========================================================
+   REVIEWS SECTION
+   ========================================================= */
 
 .reviews-section {
     background: #101010;
 }
 
 .reviews-grid {
-    max-width: 1100px;
-    margin: auto;
+    max-width: 1050px;
+    margin: 0 auto;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
     gap: 20px;
 }
 
+
+/* =========================================================
+   REVIEW CARD
+   ========================================================= */
+
 .review-card {
+    padding: 25px;
+
     background: #171717;
+
     border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 15px;
-    padding: 22px;
+
+    border-radius: 16px;
+
+    transition: 0.3s ease;
 }
 
-.review-stars {
+.review-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   REVIEW STARS
+   ========================================================= */
+
+.stars {
     color: #d4af37;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-}
 
-.review-card p {
-    color: #cccccc;
+    font-size: 19px;
+
+    letter-spacing: 2px;
+
     margin-bottom: 12px;
 }
 
-.review-card strong {
-    color: #ffffff;
+
+/* =========================================================
+   REVIEW TEXT
+   ========================================================= */
+
+.review-card p {
+    color: #cccccc;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
 }
 
-.review-button-wrap {
-    text-align: center;
+.review-card h4 {
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   REVIEW BUTTON
+   ========================================================= */
+
+.review-button-area {
+    display: flex;
+
+    justify-content: center;
+
     margin-top: 30px;
 }
 
-.review-button {
-    border: 1px solid #d4af37;
-    background: transparent;
-    color: #ffffff;
-    padding: 11px 22px;
-    border-radius: 25px;
-    font-weight: 700;
+.review-button-area .gold-btn {
+    min-width: 190px;
 }
 
-.review-button:hover {
-    background: #d4af37;
-    color: #000000;
-}
 
-/* =========================================
-   CONTACT
-   ========================================= */
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
 
 .contact-section {
     background: #0b0b0b;
 }
 
 .contact-grid {
-    max-width: 1050px;
-    margin: auto;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 20px;
 }
 
+
+/* =========================================================
+   CONTACT CARD
+   ========================================================= */
+
 .contact-card {
+    min-height: 170px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
     text-align: center;
-    padding: 25px 18px;
-    border-radius: 15px;
-    background: #151515;
+
+    background: #171717;
+
     border: 1px solid rgba(212, 175, 55, 0.2);
+
+    border-radius: 16px;
+
+    transition: 0.3s ease;
 }
 
-.contact-card h3 {
+.contact-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #d4af37;
+}
+
+
+/* =========================================================
+   CONTACT ICON
+   ========================================================= */
+
+.contact-icon {
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 175, 55, 0.12);
+
     color: #d4af37;
-    margin-bottom: 8px;
+
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   CONTACT TEXT
+   ========================================================= */
+
+.contact-card h3 {
+    color: #ffffff;
+
+    font-size: 17px;
+
+    margin-bottom: 6px;
 }
 
 .contact-card p {
-    color: #cccccc;
+    color: #aaaaaa;
+
+    font-size: 13px;
+
+    line-height: 1.6;
 }
 
 .contact-card a {
-    color: #ffffff;
+    color: #aaaaaa;
+
+    transition: 0.25s ease;
 }
 
 .contact-card a:hover {
     color: #d4af37;
 }
 
-.map-container {
-    max-width: 1050px;
-    margin: 25px auto 0;
-    overflow: hidden;
-    border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+
+/* =========================================================
+   RESPONSIVE — REVIEWS & CONTACT
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .reviews-grid,
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* =========================================
-   CART
-   ========================================= */
+
+@media (max-width: 550px) {
+
+    .reviews-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
+    .contact-card {
+        min-height: 150px;
+    }
+}
+/* =========================================================
+   CART OVERLAY
+   ========================================================= */
 
 .cart-overlay {
     position: fixed;
     inset: 0;
-    z-index: 1998;
+    z-index: 2000;
+
     background: rgba(0, 0, 0, 0.65);
+
     opacity: 0;
     visibility: hidden;
+
     transition: 0.3s ease;
 }
 
@@ -611,269 +1253,651 @@ section {
     visibility: visible;
 }
 
+
+/* =========================================================
+   CART PANEL
+   ========================================================= */
+
 .cart-panel {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1999;
-    width: min(430px, 92vw);
+    z-index: 2100;
+
+    width: min(420px, 92vw);
     height: 100vh;
-    background: #111111;
-    border-left: 1px solid rgba(212, 175, 55, 0.4);
-    transform: translateX(105%);
-    transition: transform 0.3s ease;
+
     display: flex;
     flex-direction: column;
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.4);
+
+    background: #111111;
+
+    border-left: 1px solid rgba(212, 175, 55, 0.35);
+
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.45);
+
+    transform: translateX(100%);
+
+    transition: transform 0.3s ease;
 }
 
 .cart-panel.show {
     transform: translateX(0);
 }
 
+
+/* =========================================================
+   CART HEADER
+   ========================================================= */
+
 .cart-header {
-    padding: 18px 20px;
+    min-height: 70px;
+
+    padding: 15px 20px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     border-bottom: 1px solid #292929;
+
+    background: #151515;
 }
 
-.cart-header h3 {
-    color: #d4af37;
+.cart-header h2 {
+    color: #ffffff;
+
+    font-size: 21px;
 }
 
 .cart-close {
-    border: none;
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #444444;
+
+    border-radius: 50%;
+
     background: transparent;
+
     color: #ffffff;
-    font-size: 28px;
-    cursor: pointer;
+
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
 }
+
+.cart-close:hover {
+    background: #d4af37;
+
+    color: #000000;
+
+    border-color: #d4af37;
+}
+
+
+/* =========================================================
+   CART ITEMS AREA
+   ========================================================= */
 
 .cart-items {
     flex: 1;
+
     overflow-y: auto;
+
     padding: 18px;
 }
 
 .empty-cart {
-    color: #999999;
+    padding: 50px 15px;
+
     text-align: center;
-    padding: 45px 10px;
+
+    color: #888888;
+
+    font-size: 15px;
 }
+
+
+/* =========================================================
+   INDIVIDUAL CART ITEM
+   ========================================================= */
 
 .cart-item {
     display: flex;
+
     align-items: flex-start;
+
     justify-content: space-between;
-    gap: 12px;
+
+    gap: 15px;
+
     padding: 15px 0;
+
     border-bottom: 1px solid #292929;
 }
 
 .cart-item h4 {
+    color: #ffffff;
+
+    font-size: 15px;
+
     margin-bottom: 4px;
 }
 
 .cart-item-price {
-    color: #d4af37;
-    font-size: 14px;
+    color: #999999;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
 }
+
+.cart-item strong {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CART QUANTITY CONTROLS
+   ========================================================= */
 
 .cart-quantity {
     display: flex;
+
     align-items: center;
+
     gap: 8px;
-    margin-top: 9px;
 }
 
 .cart-quantity button {
     width: 28px;
     height: 28px;
-    border: 1px solid #d4af37;
-    background: transparent;
+
+    border: 1px solid #555555;
+
+    border-radius: 6px;
+
+    background: #1d1d1d;
+
     color: #ffffff;
-    border-radius: 50%;
+
+    font-weight: 800;
 }
 
 .cart-quantity button:hover {
     background: #d4af37;
+
     color: #000000;
+
+    border-color: #d4af37;
 }
 
-.cart-remove {
-    border: none;
-    background: transparent;
-    color: #e07b7b;
-    cursor: pointer;
-    margin-top: 7px;
+.cart-quantity span {
+    min-width: 20px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-weight: 700;
 }
+
+
+/* =========================================================
+   REMOVE BUTTON
+   ========================================================= */
+
+.cart-remove {
+    margin-top: 7px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #999999;
+
+    font-size: 12px;
+
+    text-decoration: underline;
+}
+
+.cart-remove:hover {
+    color: #d4af37;
+}
+
+
+/* =========================================================
+   CART FOOTER
+   ========================================================= */
 
 .cart-footer {
     padding: 18px;
+
     border-top: 1px solid #292929;
+
+    background: #151515;
 }
 
 .cart-total-row {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     margin-bottom: 14px;
-    font-size: 19px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 800;
 }
 
 .cart-total-row strong {
     color: #d4af37;
+
+    font-size: 21px;
 }
 
-.cart-actions {
-    display: grid;
-    gap: 10px;
-}
 
-.cart-action-btn {
+/* =========================================================
+   WHATSAPP ORDER BUTTON
+   ========================================================= */
+
+.whatsapp-order-btn {
     width: 100%;
+
+    min-height: 47px;
+
+    border: 1px solid #d4af37;
+
     border-radius: 25px;
-    padding: 11px;
+
+    background: #d4af37;
+
+    color: #000000;
+
     font-weight: 800;
+
+    transition: 0.25s ease;
 }
+
+.whatsapp-order-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(212, 175, 55, 0.22);
+}
+
+
+/* =========================================================
+   CLEAR CART BUTTON
+   ========================================================= */
 
 .clear-cart-btn {
+    width: 100%;
+
+    margin-top: 9px;
+
+    min-height: 42px;
+
+    border: 1px solid #444444;
+
+    border-radius: 22px;
+
     background: transparent;
-    color: #ffffff;
-    border: 1px solid #555555;
+
+    color: #bbbbbb;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
 }
 
 .clear-cart-btn:hover {
     border-color: #d4af37;
-}
 
-.whatsapp-order-btn {
-    background: #25d366;
-    color: #ffffff;
-    border: none;
-}
-
-.whatsapp-order-btn:hover {
-    filter: brightness(1.08);
-}
-
-/* =========================================
-   FLOATING WHATSAPP
-   ========================================= */
-
-.whatsapp-float {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 1500;
-    width: 54px;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #25d366;
-    color: #ffffff;
-    font-size: 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
-    transition: 0.25s ease;
-}
-
-.whatsapp-float:hover {
-    transform: translateY(-3px) scale(1.03);
-}
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-    padding: 25px 6%;
-    text-align: center;
-    background: #070707;
-    border-top: 1px solid rgba(212, 175, 55, 0.25);
-    color: #999999;
-}
-
-footer span {
     color: #d4af37;
 }
 
-/* =========================================
-   RESPONSIVE - TABLET
-   ========================================= */
 
-@media (max-width: 1000px) {
-    .featured-grid,
-    .food-category {
-        grid-template-columns: repeat(2, 1fr);
+/* =========================================================
+   MOBILE CART
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .cart-panel {
+        width: 94vw;
     }
 
-    .reviews-grid,
-    .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .cart-header {
+        padding: 13px 16px;
+    }
+
+    .cart-items {
+        padding: 15px;
+    }
+
+    .cart-footer {
+        padding: 15px;
+    }
+
+    .cart-item {
+        gap: 10px;
+    }
+                                }
+/* =========================================================
+   FLOATING WHATSAPP BUTTON
+   ========================================================= */
+
+.floating-whatsapp {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 1500;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #25d366;
+
+    color: #ffffff;
+
+    font-size: 27px;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+    transition: 0.25s ease;
+}
+
+.floating-whatsapp:hover {
+    transform: translateY(-4px) scale(1.05);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 55px 6% 20px;
+
+    background: #080808;
+
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.footer-content {
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 40px;
+}
+
+
+/* =========================================================
+   FOOTER BRAND
+   ========================================================= */
+
+.footer-brand h3 {
+    color: #d4af37;
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    max-width: 450px;
+
+    color: #888888;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
+
+.footer-links {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #aaaaaa;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.footer-bottom {
+    max-width: 1150px;
+
+    margin: 35px auto 0;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #222222;
+
+    text-align: center;
+
+    color: #666666;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .featured-grid,
+    .food-category {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #navMenu {
+        gap: 14px;
+    }
+
+    #navMenu > a {
+        font-size: 14px;
     }
 }
 
-/* =========================================
-   RESPONSIVE - MOBILE
-   ========================================= */
 
-@media (max-width: 700px) {
+/* =========================================================
+   MOBILE HEADER
+   ========================================================= */
+
+@media (max-width: 800px) {
+
     .topbar {
-        min-height: 64px;
+        min-height: 65px;
+
         padding: 10px 5%;
+    }
+
+    .brand strong {
+        font-size: 20px;
+    }
+
+    .brand small {
+        font-size: 8px;
+
+        letter-spacing: 2px;
     }
 
     .menu-toggle {
         display: block;
     }
 
-    .nav-menu {
+    #navMenu {
         position: absolute;
-        top: 64px;
+
+        top: 100%;
         left: 0;
-        width: 100%;
-        padding: 15px 5%;
+        right: 0;
+
         display: none;
+
         flex-direction: column;
+
         align-items: stretch;
+
         gap: 0;
-        background: rgba(10, 10, 10, 0.98);
-        border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+
+        padding: 10px 5% 15px;
+
+        background: #0c0c0c;
+
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+
+        box-shadow:
+            0 12px 25px rgba(0, 0, 0, 0.35);
     }
 
-    .nav-menu.show {
+    #navMenu.show {
         display: flex;
     }
 
-    .nav-menu a {
-        padding: 13px 5px;
+    #navMenu > a {
+        padding: 12px 5px;
+
         border-bottom: 1px solid #222222;
+    }
+
+    .nav-cart {
+        margin-top: 10px;
+
+        text-align: center;
     }
 
     .hero {
         min-height: 70vh;
-        padding: 75px 5%;
+
+        padding: 80px 5%;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+
+        margin-top: -20px;
+
+        padding: 0 5%;
+    }
+
+    .quick-actions button {
+        min-height: 85px;
+    }
+
+    .featured-grid,
+    .food-category {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     section {
-        padding: 55px 5%;
+        padding: 65px 5%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .brand-icon {
+        font-size: 24px;
     }
 
-    .quick-actions-inner,
+    .brand strong {
+        font-size: 18px;
+    }
+
+    .hero {
+        min-height: 68vh;
+
+        padding: 70px 5%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+
+        max-width: 280px;
+    }
+
     .featured-grid,
-    .food-category,
-    .reviews-grid,
-    .contact-grid,
-    .booking-grid {
+    .food-category {
         grid-template-columns: 1fr;
-    }
-
-    .form-group.full-width {
-        grid-column: auto;
     }
 
     .featured-card img,
@@ -881,39 +1905,65 @@ footer span {
         height: 220px;
     }
 
-    .cart-panel {
-        width: 94vw;
-    }
-}
-
-@media (max-width: 450px) {
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero h1 {
-        font-size: 39px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
     .category-buttons {
-        gap: 7px;
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        padding-bottom: 5px;
     }
 
     .category {
-        padding: 8px 12px;
-        font-size: 13px;
+        flex: 0 0 auto;
     }
 
-    .food-card img,
-    .featured-card img {
-        height: 200px;
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        text-align: center;
     }
 
-    .booking-form {
-        padding: 18px;
+    .footer-brand p {
+        margin: 0 auto;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .floating-whatsapp {
+        right: 15px;
+
+        bottom: 15px;
+
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .brand small {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .section-heading h2,
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .quick-actions button {
+        min-height: 78px;
     }
 }
